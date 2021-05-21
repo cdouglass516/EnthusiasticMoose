@@ -32,47 +32,24 @@ void main()
     Console.WriteLine(MooseAnswers[0]);
     MooseSays("HI, I'M ENTHUSIASTIC!");
     MooseSays("Iam really enthusiastic!");
-    CanadaQuestion();
-    LoveCSharpQuestion();
-    EnthusiasticQuestion();
-    SecretQuestion();
+    AskQuestion();
+
 }
-string AskIt(string question)
+void AskQuestion()
 {
-    Console.Write($"{question} (Y/N): ");
-    string answer = Console.ReadLine().ToLower();
-
-    while (answer != "y" && answer != "n")
-    {
-        Console.Write($"{question} (Y/N): ");
-        answer = Console.ReadLine().ToLower();
-    }
-    return answer;
-
+    Console.Write("Ask Moose Anything AMA: ");
+    string answer = Console.ReadLine();
+        if(!String.IsNullOrEmpty(answer)){
+            MooseSays(MooseAsks(answer));
+            AskQuestion();
+        }
 }
+
 string MooseAsks(string answer)
 {
     Random rnd = new Random();
-    int num = rnd.Next(0, 19);  
+    int num = rnd.Next(0, 19);
     return MooseAnswers[num];
-}
-void EnthusiasticQuestion()
-{
-    MooseSays(MooseAsks(AskIt("Are you enthusiastic?")));
-}
-
-void LoveCSharpQuestion()
-{
-    MooseSays(MooseAsks(AskIt("Do you love C# yet?")));
-}
-
-void SecretQuestion()
-{
-    MooseSays(MooseAsks(AskIt("Do you want to know a secret?")));
-}
-void CanadaQuestion()
-{
-    MooseSays(MooseAsks(AskIt("Is Canada real?")));
 }
 
 void MooseSays(string message)
@@ -106,8 +83,9 @@ void MooseSays(string message)
                        `^^` `^^^`
     ");
 }
-string GenerateRandomAnswer(){
-    return"No";
+string GenerateRandomAnswer()
+{
+    return "No";
 }
 
 
